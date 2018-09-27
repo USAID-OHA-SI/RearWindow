@@ -28,7 +28,7 @@ rw_compile <- function(filepath, opunit, folderpath_archivedmsd = NULL){
   
   #select key columns
     df <- df %>% 
-      dplyr::select(operatingunit, mechanismid, implementingmechanismname, primepartner, indicator, 
+      dplyr::select(operatingunit, fundingagency, mechanismid, implementingmechanismname, primepartner, indicator, 
                     standardizeddisaggregate, agefine, sex, otherdisaggregate, modality, 
                     curr_cum, curr_targets)
     
