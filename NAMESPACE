@@ -3,6 +3,7 @@
 export(rw_calc_achievement)
 export(rw_compile)
 export(rw_pairdown)
+export(rw_plot_theme)
 export(rw_pull_threshold)
 export(rw_summarize)
 importFrom(dplyr,"%>%")
