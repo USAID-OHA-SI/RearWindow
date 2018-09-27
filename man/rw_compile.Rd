@@ -11,7 +11,7 @@ rw_compile(filepath, opunit, folderpath_archivedmsd = NULL)
 
 \item{opunit}{operatingunit}
 
-\item{folderpath_archivedmsd}{used for creating TX_NET_NEW}
+\item{folderpath_archivedmsd}{folderpath for archived MSD dataset, used for creating TX_NET_NEW}
 }
 \description{
 Setup dataset prior
