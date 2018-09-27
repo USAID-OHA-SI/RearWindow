@@ -2,4 +2,5 @@
 
 export(rw_compile)
 export(rw_pairdown)
+export(rw_summarize)
 importFrom(dplyr,"%>%")
