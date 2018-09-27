@@ -2,7 +2,7 @@
 #'
 #' @param filepath filepath to the MSD (rds file)
 #' @param opunit operatingunit
-#' @param folderpath_archivedmsd used for creating TX_NET_NEW
+#' @param folderpath_archivedmsd folderpath for archived MSD dataset, used for creating TX_NET_NEW
 #'
 #' @export
 #' @importFrom dplyr %>%
@@ -27,7 +27,7 @@ rw_compile <- function(filepath, opunit, folderpath_archivedmsd = NULL){
       ICPIutilities::add_cumulative() 
   
   #select key columns
-    df <- df
+    df <- df %>% 
       dplyr::select(operatingunit, mechanismid, implementingmechanismname, primepartner, indicator, 
                     standardizeddisaggregate, agefine, sex, otherdisaggregate, modality, 
                     curr_cum, curr_targets)
