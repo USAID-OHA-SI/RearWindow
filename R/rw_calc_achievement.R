@@ -15,7 +15,7 @@ rw_calc_achievement <- function(df){
     df_agg <- dplyr::mutate(df_agg, achievement = ifelse(is.finite(achievement), achievement, NA))
   
   #order ascending
-    df_agg <- arrange(df_agg, achievement)
+    df_agg <- dplyr::arrange(df_agg, achievement)
     
   return(df_agg)
 }
