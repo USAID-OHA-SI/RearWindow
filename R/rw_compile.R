@@ -32,4 +32,6 @@ rw_compile <- function(filepath, opunit, folderpath_archivedmsd = NULL){
                     standardizeddisaggregate, agefine, sex, otherdisaggregate, modality, 
                     curr_cum, curr_targets)
     
+  #remove rows with no data to reduce row count
+    df <- dplyr::filter_if(df, is.numeric, dplyr::any_vars(!is.na(.) & . != 0))
 }
