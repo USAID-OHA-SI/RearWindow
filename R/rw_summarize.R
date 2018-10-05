@@ -17,4 +17,6 @@ rw_summarize <- function(df, ...){
       dplyr::group_by(!!!group_vars) %>%
       dplyr::summarise_if(is.numeric, ~ sum(., na.rm = TRUE)) %>%
       dplyr::ungroup()
+    
+    return(df)
 }
