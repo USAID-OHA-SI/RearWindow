@@ -24,7 +24,7 @@ rw_prep_trend <- function(df, ind, mechid){
     dplyr::mutate(fy = stringr::str_remove(fy, "20") %>% toupper(),
            qtr = stringr::str_remove(qtr, "_") %>% toupper(),
            qtr_num = ifelse(qtr!="TARGETS", stringr::str_remove(qtr, "Q"), 0),
-           label = ifelse(qtr_num == ICPIutilities::identifypd(df, "quarter"), fy, NA)) %>% 
+           fylabel = ifelse(qtr_num == ICPIutilities::identifypd(df, "quarter"), fy, "")) %>% 
     dplyr::filter(qtr_num <= ICPIutilities::identifypd(df, "quarter")) %>% 
     dplyr::select(-qtr_num)
 }
