@@ -45,10 +45,12 @@ rw_plot_trend <- function(df, ind, mechid, target = FALSE){
     subgrp %>%
       ggplot2::ggplot(ggplot2::aes(fy, val)) +
       ggplot2::geom_bar(stat = "identity",
-                        fill = ifelse(subgrp$fy == "FY18", c_ice, c_grullo)) +
+                        fill = dplyr::case_when(subgrp$fy == "FY18" ~ c_ice, 
+                                                subgrp$fy == "FY19" ~ c_mint,
+                                                TRUE                ~ c_grullo)) +
       ggplot2::geom_text(ggplot2::aes(label = scales::comma(val)),
                          vjust = 1.5,
-                         color = ifelse(subgrp$fy == "FY18", "white", "black")) +
+                         color = ifelse(subgrp$fy == "FY17", "black", "white")) +
       ggplot2::labs(title = paste(ind, "Target"), subtitle = paste("targets", subt), x = "", y = "") +
       ggplot2::theme_bw() +
       ggplot2::theme_bw() +
