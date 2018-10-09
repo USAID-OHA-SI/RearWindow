@@ -50,10 +50,11 @@ rw_plot_trend <- function(df, ind, mechid, target = FALSE){
                                                 TRUE                ~ c_grullo)) +
       ggplot2::geom_text(ggplot2::aes(label = scales::comma(val)),
                          vjust = 1.5,
+                         fontface = "bold",
                          color = ifelse(subgrp$fy == "FY17", "black", "white")) +
       ggplot2::labs(title = paste(ind, "Target"), subtitle = paste("targets", subt), x = "", y = "") +
       ggplot2::theme_bw() +
-      rw_plot_theme()  + 
+      rw_plot_theme() + 
       ggplot2::theme(axis.text.y= ggplot2::element_blank())
   }
 }
