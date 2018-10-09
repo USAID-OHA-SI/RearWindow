@@ -53,7 +53,6 @@ rw_plot_trend <- function(df, ind, mechid, target = FALSE){
                          color = ifelse(subgrp$fy == "FY17", "black", "white")) +
       ggplot2::labs(title = paste(ind, "Target"), subtitle = paste("targets", subt), x = "", y = "") +
       ggplot2::theme_bw() +
-      ggplot2::theme_bw() +
       rw_plot_theme()  + 
       ggplot2::theme(axis.text.y= ggplot2::element_blank())
   }
