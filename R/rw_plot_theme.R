@@ -11,7 +11,9 @@ rw_plot_theme <- function(){
       panel.grid.minor   = ggplot2::element_blank(),
       panel.grid.major.y = ggplot2::element_blank(),
       panel.border       = ggplot2::element_blank(),
-      axis.text.x        = ggplot2::element_blank(),
+      #axis.text.x        = ggplot2::element_blank(),
       axis.ticks.x       = ggplot2::element_blank(),
-      axis.ticks.y       = ggplot2::element_blank())
+      axis.ticks.y       = ggplot2::element_blank(),
+      axis.line.x        = ggplot2::element_line(c_lgray)
+  )
 }
