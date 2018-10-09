@@ -11,7 +11,7 @@
 
 rw_plot_trend <- function(df, ind, mechid, target = FALSE){
   
-  #subgrp <- rw_plot_trend(df, ind, mechid)
+  subgrp <- rw_prep_trend(df, ind, mechid)
   
   subt <- dplyr::case_when(ind == "HTS_TST"      ~ "testing volume",
                            ind == "HTS_TST_POS"  ~ "positive testing volume",
