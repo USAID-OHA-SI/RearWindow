@@ -20,7 +20,14 @@ rw_identify <- function(df, threshold){
   #filter, keeping only under performancing partners
   df <- df %>% 
     dplyr::filter(achievement < threshold) %>% 
-    dplyr::arrange(mechanismid, indicator)
+    dplyr::arrange(mechanismid, indicator) 
+  
+  #identify current year cum and targets
+  curr_fy <- ICPIutilities::identifypd(df, pd_type = "year")
+  curr_cum <- paste0("fy", curr_fy, "cum")
+  curr_targets <- ICPIutilities::identifypd(df, pd_type = "target")
+  df <- df %>% 
+    dplyr::select(mechanismid, indicator, curr_cum, curr_targets, achievement)
   
   return(df)
 }
