@@ -34,7 +34,7 @@ rw_plot_trend <- function(df, ind, mechid, target = FALSE){
                          hjust=-.5, color = c_txtgray) +
       ggplot2::expand_limits(y = 0) +
       ggplot2::scale_y_continuous(label=scales::comma) +
-      ggplot2::labs(title = ind, subtitle = subt, x = "", y = "") +
+      ggplot2::labs(title = ind, subtitle = subt, caption = "", x = "", y = "") +
       ggplot2::theme_bw() +
       rw_plot_theme()
     
@@ -52,7 +52,8 @@ rw_plot_trend <- function(df, ind, mechid, target = FALSE){
                          vjust = 1.5,
                          fontface = "bold",
                          color = ifelse(subgrp$fy == "FY17", "black", "white")) +
-      ggplot2::labs(title = paste(ind, "Target"), subtitle = paste("targets", subt), x = "", y = "") +
+      ggplot2::labs(title = paste(ind, "Target"), subtitle = paste("targets", subt),
+                    caption = mechid, x = "", y = "") +
       ggplot2::theme_bw() +
       rw_plot_theme() + 
       ggplot2::theme(axis.text.y= ggplot2::element_blank())
