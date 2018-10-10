@@ -26,8 +26,11 @@ rw_pairdown <- function(df, opunit){
                                "PMTCT_STAT_NewlyIdentified_POSITIVE", "PMTCT_HEI_POS", "HTS_TST_NEG")) %>%
       dplyr::pull(indicator)
     
-  #filter df to include indicators reported in pd and only numerator
+  #filter df to include indicators reported in pd and only numerator or relevant disaggs
     df <- dplyr::filter(df, 
                         indicator %in% ind_list,
-                        standardizeddisaggregate == "Total Numerator")
+                        standardizeddisaggregate == "Total Numerator" | 
+                        (indicator == "VMMC_CIRC" & standardizeddisaggregate == "Age/Sex") |
+                        (indicator %in% c("HTS_TST", "HTS_TST_POS") & 
+                          standardizeddisaggregate %in% c("Modality/Age Aggregated/Sex/Result", "Modality/Age/Sex/Result")))
 }
