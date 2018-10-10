@@ -11,7 +11,8 @@ rw_identify <- function(df, threshold){
   
   #limit to just USAID partner & clean up by aggregating prior to achievement 
   df <- df %>%
-    dplyr::filter(fundingagency == "USAID") %>% 
+    dplyr::filter(fundingagency == "USAID",
+                  standardizeddisaggregate == "Total Numerator") %>% 
     rw_summarize(mechanismid, indicator)
   
   #add column for achievement
