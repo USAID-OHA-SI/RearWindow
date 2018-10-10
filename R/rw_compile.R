@@ -18,13 +18,13 @@ rw_compile <- function(filepath, opunit, folderpath_archivedmsd = NULL){
   #clean with ICPI utilities - offical names, add net new and have FY18 cum
     df <- df %>%
       ICPIutilities::rename_official() %>%
-      ICPIutilities::combine_netnew(folderpath_archivedmsd) %>%
+      ICPIutilities::combine_netnew(folderpath_archivedmsd)
       
     #select key columns
     df <- df %>% 
       dplyr::select(operatingunit, fundingagency, mechanismid, implementingmechanismname, primepartner, indicator, 
                     standardizeddisaggregate, agefine, sex, otherdisaggregate, modality, 
-                    dplyr::starts_with(fy))
+                    dplyr::starts_with("fy"))
   #add cumulative
     df <- ICPIutilities::add_cumulative(df)
     
