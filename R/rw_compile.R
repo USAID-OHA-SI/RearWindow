@@ -15,22 +15,18 @@ rw_compile <- function(filepath, opunit, folderpath_archivedmsd = NULL){
   #filter ou and select relevant indicators
     df <- rw_pairdown(df, opunit)
   
-  #identify current year cum and targets
-    curr_fy <- ICPIutilities::identifypd(df, pd_type = "year")
-    curr_cum <- paste0("fy", curr_fy, "cum")
-    curr_targets <- ICPIutilities::identifypd(df, pd_type = "target")
-    
   #clean with ICPI utilities - offical names, add net new and have FY18 cum
     df <- df %>%
       ICPIutilities::rename_official() %>%
       ICPIutilities::combine_netnew(folderpath_archivedmsd) %>%
-      ICPIutilities::add_cumulative() 
-  
-  #select key columns
+      
+    #select key columns
     df <- df %>% 
       dplyr::select(operatingunit, fundingagency, mechanismid, implementingmechanismname, primepartner, indicator, 
                     standardizeddisaggregate, agefine, sex, otherdisaggregate, modality, 
-                    curr_cum, curr_targets)
+                    dplyr::starts_with(fy))
+  #add cumulative
+    df <- ICPIutilities::add_cumulative(df)
     
   #remove rows with no data to reduce row count
     df <- dplyr::filter_if(df, is.numeric, dplyr::any_vars(!is.na(.) & . != 0))
