@@ -1,0 +1,43 @@
+#' Graph agency comparison
+#'
+#' @param df dataframe to use 
+#'
+#' @importFrom dplyr %>%
+#' @export
+#'
+
+rw_plot_achv_agency <- function(df){
+  
+  #establish thresholds
+  qtr <- ICPIutilities::identifypd(df, "quarter")
+  thres_low <- rw_pull_threshold(qtr, "low")
+  thres_med <- rw_pull_threshold(qtr, "med")
+  thres_ach <- 1L
+  
+  #setup table to graph
+  ach <- rw_prep_achv_agency(df)
+  
+  #graph achievement
+  ach %>% 
+    ggplot2::ggplot(ggplot2::aes(reorder(indicator, -achievement), achievement)) + 
+    ggplot2::geom_hline(yintercept = c(thres_low, thres_med, thres_ach), color = c_lgray) +
+    ggplot2::geom_point(ggplot2::aes(y = CDC),
+                        shape = 21,
+                        fill = "white",
+                        color = c_ubuntu,
+                        stroke = 2,
+                        size = 4) +
+    ggplot2::geom_point(ggplot2::aes(y = USAID),
+                        shape = 21,
+                        fill = c_ice,
+                        color = c_ice,
+                        stroke = 2,
+                        size = 4) +
+    # ggplot2::geom_text(aes(label = scales::percent(achievement)), 
+    #                    hjust=-.5, vjust=.3, color = c_txtgray) +
+    ggplot2::coord_flip() +
+    ggplot2::xlab("") +
+    ggplot2::ylab("") +
+    rw_plot_theme() +
+    ggplot2::theme(axis.text.x = ggplot2::element_blank())
+}
