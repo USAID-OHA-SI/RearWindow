@@ -37,8 +37,8 @@ rw_prep_achv_age <- function(df, ind, mechid = NULL) {
     dplyr::mutate_(.dots = setNames(fcn, var_name)) %>% 
     dplyr::ungroup() %>% 
     #adjust missing or large achievement (throws off labels) & factor ages for odering graph 
-    dplyr::mutate(achievement = ifelse(is.na(achievement), 0, achievement),
-                  label_y = ifelse(achievement > 5, NA, label_y), 
+    dplyr::mutate(achievement = ifelse(is.na(achievement), 1, achievement),
+                  label_y = ifelse((achievement > 5 | fy2018_targets == 0), NA, label_y), 
                   achievement = ifelse(achievement > 5, 1, achievement),
                   agesemifine = forcats::fct_relevel(agesemifine, 
                                                      "50+",
