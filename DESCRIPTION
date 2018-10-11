@@ -15,5 +15,6 @@ Imports:
     ICPIutilities,
     readr,
     stringr,
-    tidyr
+    tidyr,
+    ggplot2
 RoxygenNote: 6.1.0
