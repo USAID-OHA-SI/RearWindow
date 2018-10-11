@@ -3,6 +3,7 @@
 #' @param df dataframe to add achievement onto
 #' @param curr_fy current fiscal year, eg 2018L
 #' 
+#' @importFrom stats setNames
 #' @export
 
 rw_calc_achievement <- function(df, curr_fy){

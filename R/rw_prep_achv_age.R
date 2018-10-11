@@ -5,6 +5,7 @@
 #' @param mechid if you want to graph a particular mechanism, eg "82818", default = NULL
 #'
 #' @importFrom dplyr %>%
+#' @importFrom stats setNames
 #' @export
 
 
