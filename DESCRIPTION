@@ -16,7 +16,9 @@ Imports:
     stringr,
     tidyr,
     ggplot2,
-    forcats
+    forcats,
+    scales,
+    tibble
 Remotes: 
     ICPI/ICPIutilities
 RoxygenNote: 6.1.0
