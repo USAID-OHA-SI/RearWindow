@@ -27,7 +27,6 @@ rw_identify <- function(df, threshold){
     dplyr::arrange(mechanismid, indicator) 
   
   #identify current year cum and targets
-  curr_fy <- ICPIutilities::identifypd(df, pd_type = "year")
   curr_cum <- paste0("fy", curr_fy, "cum")
   curr_targets <- ICPIutilities::identifypd(df, pd_type = "target")
   df <- df %>% 
