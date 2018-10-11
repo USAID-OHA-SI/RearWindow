@@ -6,6 +6,15 @@
 #'
 #' @importFrom dplyr %>% 
 #' @export
+#' 
+#' @examples 
+#' \dontrun{
+#' #compare achievement across indicators
+#'   df_compiled <- rw_compile("~/Data/MERdata.rds", "Tanzania", "~/Data/")
+#'   rw_prep_achv(df_compiled, indicator)
+#' #compare achievement across HTS modalitites
+#'   rw_prep_achv(df_compiled, modality, ind = "HTS_TST")
+#' } 
 
 
 rw_prep_achv <- function(df, ..., ind = NULL){
