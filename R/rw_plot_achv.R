@@ -15,7 +15,7 @@ rw_plot_achv <- function(df){
     thres_ach <- 1L
   
   #setup table to graph
-    ach <- rw_prep_achv(df)
+    ach <- rw_prep_achv(df, indicator)
   
   #graph achievement
     ach %>% 
