@@ -1,7 +1,7 @@
 #' Multiplot function from Cookbook for R
 #' @param ... objects to be passed in of 
 #' @param plotlist list of graphs to plot
-#' @param cols 
+#' @param cols how many columns in layout
 #' @param layout matrix form layout
 #' @source Cookbook for R http://www.cookbook-r.com/Graphs/Multiple_graphs_on_one_page_(ggplot2)/
 #'

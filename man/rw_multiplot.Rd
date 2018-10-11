@@ -14,7 +14,7 @@ rw_multiplot(..., plotlist = NULL, cols = 1, layout = NULL)
 
 \item{plotlist}{list of graphs to plot}
 
-\item{cols}{}
+\item{cols}{how many columns in layout}
 
 \item{layout}{matrix form layout}
 }
