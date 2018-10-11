@@ -4,6 +4,7 @@
 #'
 #' @importFrom dplyr %>%
 #' @importFrom ggplot2 aes
+#' @importFrom stats reorder
 #' @export
 
 rw_plot_achv <- function(df){
