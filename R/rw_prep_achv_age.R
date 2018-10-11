@@ -14,6 +14,9 @@ rw_prep_achv_age <- function(df, ind, mechid = NULL) {
   curr_fy <- ICPIutilities::identifypd(df, pd_type = "year")
   curr_cum <- paste0("fy", curr_fy, "cum")
   curr_targets <- ICPIutilities::identifypd(df, pd_type = "target")
+  #setup for taking max (for labeling purposes) of cum and targets with mutate_
+  var_name <- "label_y"
+  fcn <- paste0("max(", curr_cum, ",", curr_targets, ")")
   
   #if using a mechanism, filter first for only that mechanism
   if(!is.null(mechid)) df <- dplyr::filter(df, mechanismid == mechid)
@@ -31,7 +34,7 @@ rw_prep_achv_age <- function(df, ind, mechid = NULL) {
     dplyr::arrange(agesemifine) %>%
     #create labels column for graph, bases on further bar
     dplyr::group_by(agesemifine) %>% 
-    dplyr::mutate(label_y = max(fy2018cum, fy2018_targets)) %>% 
+    dplyr::mutate_(.dots = setNames(fcn, var_name)) %>% 
     dplyr::ungroup() %>% 
     #adjust missing or large achievement (throws off labels) & factor ages for odering graph 
     dplyr::mutate(achievement = ifelse(is.na(achievement), 0, achievement),
