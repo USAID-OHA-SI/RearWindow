@@ -16,5 +16,6 @@ Imports:
     readr,
     stringr,
     tidyr,
-    ggplot2
+    ggplot2,
+    forcats
 RoxygenNote: 6.1.0
