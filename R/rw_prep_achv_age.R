@@ -36,22 +36,13 @@ rw_prep_achv_age <- function(df, ind, mechid = NULL) {
     dplyr::group_by(agesemifine) %>% 
     dplyr::mutate_(.dots = setNames(fcn, var_name)) %>% 
     dplyr::ungroup() %>% 
+    #arrange age descending for factor order in order to graph correctly
+    dplyr::arrange(desc(agesemifine)) %>% 
     #adjust missing or large achievement (throws off labels) & factor ages for odering graph 
     dplyr::mutate(achievement = ifelse(is.na(achievement), 1, achievement),
                   label_y = ifelse((achievement > 5 | fy2018_targets == 0), NA, label_y), 
                   achievement = ifelse(achievement > 5, 1, achievement),
-                  agesemifine = forcats::fct_relevel(agesemifine, 
-                                                     "50+",
-                                                     # "40-49", #agefine
-                                                     # "35-39", #agefine
-                                                     # "30-34", #agefine
-                                                     "30-49",
-                                                     "25-29",
-                                                     "20-24",
-                                                     "15-19",
-                                                     "10-14",
-                                                     "02 Months - 09 Years",
-                                                     "<02 Months")) %>% 
+                  agesemifine = forcats::as_factor(agesemifine)) %>% 
     dplyr::arrange(agesemifine)  
 }
 
