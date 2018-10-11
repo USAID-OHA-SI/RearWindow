@@ -4,11 +4,24 @@
 \alias{rw_prep_achv}
 \title{Create a table for graphing achievement}
 \usage{
-rw_prep_achv(df)
+rw_prep_achv(df, ..., ind = NULL)
 }
 \arguments{
 \item{df}{dataframe to}
+
+\item{...}{grouping variable, eg indicator}
+
+\item{ind}{can specify if you want to look at a disagg of one indicator, default = NULL}
 }
 \description{
 Create a table for graphing achievement
+}
+\examples{
+\dontrun{
+#compare achievement across indicators
+  df_compiled <- rw_compile("~/Data/MERdata.rds", "Tanzania", "~/Data/")
+  rw_prep_achv(df_compiled, indicator)
+#compare achievement across HTS modalitites
+  rw_prep_achv(df_compiled, modality, ind = "HTS_TST")
+} 
 }
