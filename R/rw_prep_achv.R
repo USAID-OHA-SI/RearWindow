@@ -40,6 +40,6 @@ rw_prep_achv <- function(df, ..., ind = NULL){
       dplyr::summarise_at(dplyr::vars(curr_cum, curr_targets), ~ sum(., na.rm = TRUE)) %>%
       dplyr::ungroup() %>% 
       #calculate achievement
-      rw_calc_achievement() %>% 
+      rw_calc_achievement(curr_fy) %>% 
       dplyr::arrange(achievement)
 }

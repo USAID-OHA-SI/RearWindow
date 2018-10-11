@@ -15,8 +15,11 @@ rw_identify <- function(df, threshold){
                   standardizeddisaggregate == "Total Numerator") %>% 
     rw_summarize(mechanismid, indicator)
   
+  #identify current year
+  curr_fy <- ICPIutilities::identifypd(df, pd_type = "year")
+  
   #add column for achievement
-  df <- rw_calc_achievement(df)
+  df <- rw_calc_achievement(df, curr_fy)
   
   #filter, keeping only under performancing partners
   df <- df %>% 
