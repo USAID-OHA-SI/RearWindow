@@ -4,10 +4,12 @@
 \alias{rw_calc_achievement}
 \title{Calcuate achievement}
 \usage{
-rw_calc_achievement(df)
+rw_calc_achievement(df, curr_fy)
 }
 \arguments{
 \item{df}{dataframe to add achievement onto}
+
+\item{curr_fy}{current fiscal year, eg 2018L}
 }
 \description{
 Calcuate achievement
