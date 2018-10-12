@@ -22,12 +22,14 @@ rw_plot_achv_agency <- function(df){
     ggplot2::ggplot(ggplot2::aes(reorder(indicator, -achievement), achievement)) + 
     ggplot2::geom_hline(yintercept = c(thres_low, thres_med, thres_ach), color = c_lgray) +
     ggplot2::geom_point(ggplot2::aes(y = CDC),
+                        na.rm = TRUE,
                         shape = 21,
                         fill = "white",
                         color = c_ubuntu,
                         stroke = 2,
                         size = 4) +
     ggplot2::geom_point(ggplot2::aes(y = USAID),
+                        na.rm = TRUE,
                         shape = 21,
                         fill = c_ice,
                         color = c_ice,
