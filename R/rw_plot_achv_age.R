@@ -1,4 +1,14 @@
 
+#' Plot age achievement for a given indicator
+#'
+#' @param df data frame to use
+#' @param ind indicator to graph
+#' @param mechid if interested in a particular mechanism, eg "82182"; default = NULL
+#'
+#' @importFrom dplyr %>% 
+#' @export
+
+
 rw_plot_achv_age <- function(df, ind, mechid = NULL){
   
   #establish thresholds
