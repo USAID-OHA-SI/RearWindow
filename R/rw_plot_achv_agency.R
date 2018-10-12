@@ -33,8 +33,16 @@ rw_plot_achv_agency <- function(df){
                         color = c_ice,
                         stroke = 2,
                         size = 4) +
-    # ggplot2::geom_text(aes(label = scales::percent(achievement)), 
-    #                    hjust=-.5, vjust=.3, color = c_txtgray) +
+    ggplot2::geom_text(ggplot2::aes(y = USAID, label = scales::percent(USAID)),
+                       hjust= ifelse(ach$USAID > ach$CDC, -0.5, 1.5),
+                       vjust=.3, 
+                       color = c_ice,
+                       na.rm = TRUE) +
+    ggplot2::geom_text(ggplot2::aes(y = CDC, label = scales::percent(CDC)),
+                       hjust= ifelse(ach$CDC > ach$USAID, -0.5, 1.5),
+                       vjust=.3, 
+                       color = c_ubuntu,
+                       na.rm = TRUE) +
     ggplot2::coord_flip() +
     ggplot2::xlab("") +
     ggplot2::ylab("") +
