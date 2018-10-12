@@ -25,10 +25,30 @@ rw_prep_achv_agency <- function(df){
     dplyr::select(fundingagency, indicator, achievement) %>%
     tidyr::spread(fundingagency, achievement)
   
-  rw_prep_achv(df, indicator) %>%
+  df_all <- df %>% 
+    rw_prep_achv(indicator) %>%
     dplyr::select(indicator, achievement) %>%
     dplyr::arrange(achievement) %>%
     dplyr::full_join(., df_agency, by = "indicator")
+  
+  df_label <- df_all %>% 
+    dplyr::select(-achievement) %>% 
+    tidyr::gather(agency, pct, CDC, USAID) %>% 
+    dplyr::filter(pct !=0, !is.na(pct)) %>% 
+    dplyr::group_by(agency) %>% 
+    dplyr::slice(1) %>% 
+    dplyr::ungroup() %>% 
+    dplyr::mutate(lab_CDC = ifelse(agency == "CDC", 1, NA),
+                  lab_USAID = ifelse(agency == "USAID", 1, NA)) %>% 
+    dplyr::select(-c(agency, pct))
+  
+  if(dplyr::n_distinct(df_label$indicator) == 1){
+    df_label <- df_label %>% 
+      dplyr::mutate(lab_USAID = 1) %>% 
+      dplyr::slice(1)
+  }
+  
+  dplyr::left_join(df_all, df_label, by = "indicator")
 
 }
 
