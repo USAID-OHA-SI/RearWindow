@@ -48,7 +48,16 @@ rw_prep_achv_agency <- function(df){
       dplyr::slice(1)
   }
   
+  df_all <- dplyr::left_join(df_all, df_label, by = "indicator")
+  
+  df_label <- df_all %>% 
+    dplyr::select(indicator, achievement) %>% 
+    dplyr::filter(achievement !=0, !is.na(achievement)) %>% 
+    dplyr::slice(1) %>% 
+    dplyr::mutate(lab_NAT = 1) %>% 
+    dplyr::select(-achievement)
+  
   dplyr::left_join(df_all, df_label, by = "indicator")
-
+  
 }
 
