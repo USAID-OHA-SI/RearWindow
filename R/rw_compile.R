@@ -15,10 +15,9 @@ rw_compile <- function(filepath, opunit, folderpath_archivedmsd = NULL){
   #filter ou and select relevant indicators
     df <- rw_pairdown(df, opunit)
   
-  #clean with ICPI utilities - offical names, add net new and have FY18 cum
-    df <- df %>%
-      ICPIutilities::rename_official() %>%
-      ICPIutilities::combine_netnew(folderpath_archivedmsd)
+  #clean with ICPI utilities - offical names
+    df <- ICPIutilities::rename_official(df)
+      
       
     #select key columns
     df <- df %>% 
