@@ -4,10 +4,12 @@
 \alias{rw_addthresholds}
 \title{Extract Threshold Values}
 \usage{
-rw_addthresholds(qtr)
+rw_addthresholds(df, qtr = NULL)
 }
 \arguments{
-\item{qtr}{current fiscal quarter, eg "q2"}
+\item{df}{dataframe (if it contains current quarter, otherwise specify with qtr)}
+
+\item{qtr}{current fiscal quarter, eg "q2", default = NULL}
 }
 \description{
 Extract Threshold Values

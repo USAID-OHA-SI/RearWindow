@@ -1,11 +1,12 @@
 #' Extract Threshold Values
 #'
-#' @param qtr current fiscal quarter, eg "q2"
+#' @param df dataframe (if it contains current quarter, otherwise specify with qtr)
+#' @param qtr current fiscal quarter, eg "q2", default = NULL
 #'
 #' @export
 
 
-rw_addthresholds <- function(qtr){
+rw_addthresholds <- function(df, qtr = NULL){
   
   #table of thresholds values
     thres_table <- 
@@ -16,7 +17,10 @@ rw_addthresholds <- function(qtr){
             "good", 0.35,  0.6, 0.85,  1.1,
              "ach",    1,    1,    1,    1
         )
-
+  
+  #identify current quarter if it is not specified by user 
+    if(is.null(qtr)) qtr <- paste0("q", ICPIutilities::identifypd(df, "quarter"))
+    
   #extract thresholds as vector
     thres <- dplyr::pull(thres_table, qtr)
   
