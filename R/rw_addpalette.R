@@ -1,5 +1,5 @@
 #' Read in color palette
-#'
+#' @description  Colors from the ICPI color palette - ICPIutilities::add_color(palette = "woods")
 #' @export
 
 rw_addpalette <- function(){
