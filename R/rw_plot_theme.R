@@ -14,6 +14,6 @@ rw_plot_theme <- function(){
       #axis.text.x        = ggplot2::element_blank(),
       axis.ticks.x       = ggplot2::element_blank(),
       axis.ticks.y       = ggplot2::element_blank(),
-      axis.line.x        = ggplot2::element_line(c_lgray)
+      axis.line.x        = ggplot2::element_line("#bfbfbf") #lgray
   )
 }
