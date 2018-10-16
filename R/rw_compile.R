@@ -2,12 +2,11 @@
 #'
 #' @param filepath filepath to the MSD (rds file)
 #' @param opunit operatingunit
-#' @param folderpath_archivedmsd folderpath for archived MSD dataset, used for creating TX_NET_NEW
 #'
 #' @export
 #' @importFrom dplyr %>%
 
-rw_compile <- function(filepath, opunit, folderpath_archivedmsd = NULL){
+rw_compile <- function(filepath, opunit){
   
   #import data
     df <- readr::read_rds(filepath) 

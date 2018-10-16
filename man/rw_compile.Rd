@@ -4,14 +4,12 @@
 \alias{rw_compile}
 \title{Setup dataset prior}
 \usage{
-rw_compile(filepath, opunit, folderpath_archivedmsd = NULL)
+rw_compile(filepath, opunit)
 }
 \arguments{
 \item{filepath}{filepath to the MSD (rds file)}
 
 \item{opunit}{operatingunit}
-
-\item{folderpath_archivedmsd}{folderpath for archived MSD dataset, used for creating TX_NET_NEW}
 }
 \description{
 Setup dataset prior
