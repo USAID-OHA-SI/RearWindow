@@ -7,5 +7,5 @@
 rw_addpalette()
 }
 \description{
-Read in color palette
+Colors from the ICPI color palette - ICPIutilities::add_color(palette = "woods")
 }
