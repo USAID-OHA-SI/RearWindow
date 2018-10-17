@@ -12,13 +12,15 @@ Encoding: UTF-8
 LazyData: true
 Imports: 
     dplyr,
-    readr,
-    stringr,
-    tidyr,
-    ggplot2,
     forcats,
+    fs,
+    ggplot2,
+    purrr,
+    readr,
     scales,
-    tibble
+    stringr,
+    tibble,
+    tidyr
 Remotes: 
     ICPI/ICPIutilities
 RoxygenNote: 6.1.0
