@@ -23,16 +23,16 @@ rw_output_mech <- function(df, ind, mech, savepath = NULL){
   
   #create multiplot with either 2 or 3 columns depending on what's needed
     if(stringr::str_detect(ind, "_POS")){
-      rw_multiplot(v0, v1, v2, cols = 3)
+      output <- gridExtra::grid.arrange(v0, v1, v2, ncol = 3)
     } else {
-      rw_multiplot(v1, v2, cols = 2)
+      output <- gridExtra::grid.arrange(v1, v2, ncol = 2)
     }
   
   #save output
     if(!is.null(savepath)) {
       ou <- unique(df$operatingunit)
       pd <- ICPIutilities::identifypd(df) %>% toupper()
-      rw_save(savepath, ou, pd, "trend", mech, ind)
+      rw_save(output, savepath, ou, pd, "trend", mech, ind)
     }
   
 }
