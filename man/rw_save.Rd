@@ -4,10 +4,12 @@
 \alias{rw_save}
 \title{Save visuals}
 \usage{
-rw_save(folderpath, ou, pd, plotname = NULL, mech = NULL, ind = NULL,
-  w = 9, h = 3.75)
+rw_save(plot, folderpath, ou, pd, plotname = NULL, mech = NULL,
+  ind = NULL, w = 9, h = 3.75)
 }
 \arguments{
+\item{plot}{object name of plot}
+
 \item{folderpath}{path to folder where you want this output stored}
 
 \item{ou}{operatingunit}
@@ -16,7 +18,7 @@ rw_save(folderpath, ou, pd, plotname = NULL, mech = NULL, ind = NULL,
 
 \item{plotname}{name of the visual}
 
-\item{mech}{mechanism id (character),, default = NULL}
+\item{mech}{mechanism id (character), default = NULL}
 
 \item{ind}{indicator, default = NULL}
 

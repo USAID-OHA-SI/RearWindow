@@ -1,17 +1,18 @@
 #' Save visuals
 #'
+#' @param plot object name of plot 
 #' @param folderpath path to folder where you want this output stored 
 #' @param ou operatingunit
 #' @param pd period
 #' @param plotname name of the visual
-#' @param mech mechanism id (character),, default = NULL
+#' @param mech mechanism id (character), default = NULL
 #' @param ind indicator, default = NULL
 #' @param w width (in), default = 9 
 #' @param h height (in), default = 3.75
 #'
 #' @export
 
-rw_save <- function(folderpath, ou, pd, plotname = NULL, mech = NULL, ind = NULL, w = 9, h = 3.75){
+rw_save <- function(plot, folderpath, ou, pd, plotname = NULL, mech = NULL, ind = NULL, w = 9, h = 3.75){
   
   #define basic save name
     save_name <- paste(ou, pd, sep = "_")
@@ -24,6 +25,7 @@ rw_save <- function(folderpath, ou, pd, plotname = NULL, mech = NULL, ind = NULL
   
   #save
     ggplot2::ggsave(save_name, 
+                    plot = plot,
                     path = folderpath,
                     width = w , height = h, units = "in",
                     dpi = 300)
