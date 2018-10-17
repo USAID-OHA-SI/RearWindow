@@ -3,11 +3,12 @@
 #' @param df data frame to use
 #' @param ind indicator, eg "HTS_TST"
 #' @param mech implementing mechanism, eg "21212"
+#' @param savepath if specified, folder path where you want the png file save, default = NULL
 #'
 #' @importFrom dplyr %>%
 #' @export
 
-rw_output_mech <- function(df, ind, mech){
+rw_output_mech <- function(df, ind, mech, savepath = NULL){
   
   #plot result trends
     v1 <- rw_plot_trend(df, ind, mech)
@@ -25,6 +26,13 @@ rw_output_mech <- function(df, ind, mech){
       rw_multiplot(v0, v1, v2, cols = 3)
     } else {
       rw_multiplot(v1, v2, cols = 2)
+    }
+  
+  #save output
+    if(!is.null(savepath)) {
+      ou <- unique(df$operatingunit)
+      pd <- ICPIutilities::identifypd(df) %>% toupper()
+      rw_save(savepath, ou, pd, "trend", mech, ind)
     }
   
 }

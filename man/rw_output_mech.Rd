@@ -4,7 +4,7 @@
 \alias{rw_output_mech}
 \title{Prepare Multiplot for each partner's underperforming mechanism}
 \usage{
-rw_output_mech(df, ind, mech)
+rw_output_mech(df, ind, mech, savepath = NULL)
 }
 \arguments{
 \item{df}{data frame to use}
@@ -12,6 +12,8 @@ rw_output_mech(df, ind, mech)
 \item{ind}{indicator, eg "HTS_TST"}
 
 \item{mech}{implementing mechanism, eg "21212"}
+
+\item{savepath}{if specified, folder path where you want the png file save, default = NULL}
 }
 \description{
 Prepare Multiplot for each partner's underperforming mechanism
