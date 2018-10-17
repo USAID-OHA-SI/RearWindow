@@ -11,19 +11,24 @@
 
 rw_plot_trend <- function(df, ind, mechid, target = FALSE){
   
-  subgrp <- rw_prep_trend(df, ind, mechid)
+  #add palette
+    color <- rw_addpalette() 
+    
+  #setup table to graph
+    subgrp <- rw_prep_trend(df, ind, mechid)
   
-  subt <- dplyr::case_when(ind == "HTS_TST"        ~ "testing volume",
-                           ind == "HTS_TST_POS"    ~ "positive testing volume",
-                           ind == "TX_NEW"         ~ "new on treatment volume",
-                           ind == "VMMC_CIRC"      ~ "voluntary MC volume",
-                           ind == "TX_CURR"        ~ "current on treatment volume",
-                           ind == "TX_NET_NEW"     ~ "net new on treatment volume",
-                           ind == "PrEP_NEW"       ~ "PrEP volume",
-                           ind == "PMTCT_STAT_POS" ~ "postive PMTCT volume",
-                           ind == "PMTCT_STAT"     ~ "PMTCT volume",
-                           ind == "PMTCT_EID"      ~ "PMTCT_EID volume",
-                           TRUE                    ~ "volume")
+  #axis names
+    subt <- dplyr::case_when(ind == "HTS_TST"        ~ "testing volume",
+                             ind == "HTS_TST_POS"    ~ "positive testing volume",
+                             ind == "TX_NEW"         ~ "new on treatment volume",
+                             ind == "VMMC_CIRC"      ~ "voluntary MC volume",
+                             ind == "TX_CURR"        ~ "current on treatment volume",
+                             ind == "TX_NET_NEW"     ~ "net new on treatment volume",
+                             ind == "PrEP_NEW"       ~ "PrEP volume",
+                             ind == "PMTCT_STAT_POS" ~ "postive PMTCT volume",
+                             ind == "PMTCT_STAT"     ~ "PMTCT volume",
+                             ind == "PMTCT_EID"      ~ "PMTCT_EID volume",
+                             TRUE                    ~ "volume")
   
   if(target == FALSE){
     subgrp <- dplyr::filter(subgrp, qtr != "TARGETS")
@@ -31,7 +36,7 @@ rw_plot_trend <- function(df, ind, mechid, target = FALSE){
     subgrp %>% 
       ggplot2::ggplot(ggplot2::aes(qtr, val, group = fy)) +
       ggplot2::geom_line(color = ifelse(subgrp$fy == "FY18", color["ice"], color["grullo"]),
-                size = 1) +
+                         size = 1) +
       ggplot2::geom_point(shape = 21,
                  fill = ifelse(subgrp$fy == "FY18", color["ice"], color["grullo"]),
                  color = "white",

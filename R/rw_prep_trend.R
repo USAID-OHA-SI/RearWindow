@@ -11,7 +11,7 @@
 rw_prep_trend <- function(df, ind, mechid){
   
   df %>%
-    dplyr::filter(indicator %in% ind,
+    dplyr::filter(indicator == ind,
                   standardizeddisaggregate == "Total Numerator",
                   mechanismid == mechid) %>%
     dplyr::group_by(mechanismid, indicator) %>%
