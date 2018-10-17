@@ -11,11 +11,12 @@
 #'
 #' @export
 
-rw_save <- function(folderpath, ou, pd, plotname, mech = NULL, ind = NULL, w = 9, h = 3.75){
+rw_save <- function(folderpath, ou, pd, plotname = NULL, mech = NULL, ind = NULL, w = 9, h = 3.75){
   
   #define basic save name
-    save_name <- paste(ou, pd, plotname, sep = "_")
+    save_name <- paste(ou, pd, sep = "_")
   #if mechanism or indicator exist, include that in save name
+    if(!is.null(plotname)) save_name <- paste(save_name, plotname, sep = "_")
     if(!is.null(mech)) save_name <- paste(save_name, mech, sep = "_")
     if(!is.null(ind))  save_name <- paste(save_name, ind, sep = "_")
   #add file extension

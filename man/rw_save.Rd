@@ -4,8 +4,8 @@
 \alias{rw_save}
 \title{Save visuals}
 \usage{
-rw_save(folderpath, ou, pd, plotname, mech = NULL, ind = NULL, w = 9,
-  h = 3.75)
+rw_save(folderpath, ou, pd, plotname = NULL, mech = NULL, ind = NULL,
+  w = 9, h = 3.75)
 }
 \arguments{
 \item{folderpath}{path to folder where you want this output stored}
