@@ -2,6 +2,7 @@
 
 export(rw_addpalette)
 export(rw_addthresholds)
+export(rw_assemble_plots)
 export(rw_calc_achievement)
 export(rw_compile)
 export(rw_identify)
