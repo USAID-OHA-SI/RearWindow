@@ -4,10 +4,14 @@
 \alias{rw_plot_achv_hts}
 \title{Plot achievement for HTS modalities}
 \usage{
-rw_plot_achv_hts(df, ind)
+rw_plot_achv_hts(df, ind, agency = NULL)
 }
 \arguments{
 \item{df}{data frame to plot}
+
+\item{ind}{indicator to specify, "HTS_TST" or "HTS_TST_POS"}
+
+\item{agency}{can specify agency to filter to, eg "USAID" or "CDC", default == NULL}
 }
 \description{
 Plot achievement for HTS modalities

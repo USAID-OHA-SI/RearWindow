@@ -1,13 +1,15 @@
 #' Plot achievement for HTS modalities
 #'
 #' @param df data frame to plot
-#'
+#' @param ind indicator to specify, "HTS_TST" or "HTS_TST_POS"
+#' @param agency can specify agency to filter to, eg "USAID" or "CDC", default == NULL
+#' 
 #' @importFrom dplyr %>%
 #' @importFrom ggplot2 aes
 #' @importFrom stats reorder
 #' @export
 
-rw_plot_achv_hts <- function(df, ind){
+rw_plot_achv_hts <- function(df, ind, agency = NULL){
   
   #add palette
     color <- rw_addpalette()
@@ -16,7 +18,7 @@ rw_plot_achv_hts <- function(df, ind){
     threshold <- rw_addthresholds(df)
   
   #setup table to graph
-    ach <- rw_prep_achv(df, modality, ind = ind, agency == "USAID")
+    ach <- rw_prep_achv(df, modality, ind = ind, agency = agency)
   
   #graph achievement
     ach %>% 
