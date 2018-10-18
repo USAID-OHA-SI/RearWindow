@@ -4,7 +4,7 @@
 \alias{rw_identify}
 \title{Identify underperforming partners}
 \usage{
-rw_identify(df, threshold)
+rw_identify(df, threshold = NULL)
 }
 \arguments{
 \item{df}{dataframe to use, needs to contain cumulative and targets}

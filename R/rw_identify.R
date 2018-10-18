@@ -7,7 +7,7 @@
 #' @export
 
 
-rw_identify <- function(df, threshold){
+rw_identify <- function(df, threshold = NULL){
   
   #limit to just USAID partner & clean up by aggregating prior to achievement 
   df <- df %>%
@@ -21,11 +21,12 @@ rw_identify <- function(df, threshold){
   #add column for achievement
   df <- rw_calc_achievement(df, curr_fy)
   
-  #filter, keeping only under performancing partners
-  df <- df %>% 
-    dplyr::filter(achievement < threshold) %>% 
-    dplyr::arrange(mechanismid, indicator) 
+  #arrange by mechanism
+  df <- dplyr::arrange(df, mechanismid, indicator)
   
+  #filter, keeping only under performancing partners
+  if(!is.null(threshold)) df <- dplyr::filter(df, achievement < threshold)
+
   #identify current year cum and targets
   curr_cum <- paste0("fy", curr_fy, "cum")
   curr_targets <- ICPIutilities::identifypd(df, pd_type = "target")
