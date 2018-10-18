@@ -14,10 +14,12 @@ rw_addpalette <- function(){
            "ubuntu", "#cc5234",
            "amazon", "#d9812c",
            "grullo", "#948d79",
+            "lmint", "#c4d9d1", #60% mint
              "lice", "#a2bcdd", #60% ice
           "lubuntu", "#ebbaae", #60% ubuntu
             "lgray", "#bfbfbf",
-          "txtgray", "#404040"
+          "txtgray", "#404040",
+         "txtgray2", "#808080"
         )
 
   #extract colors as vector
