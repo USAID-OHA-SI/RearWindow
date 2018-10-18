@@ -1,7 +1,7 @@
 #' Assemble various visuals for country MER performance review
 #'
-#' @param opunit operating unit to observe 
 #' @param filepath_msd filepath to the OUxIM MSD (MSD must be saves as an rds) 
+#' @param opunit operating unit to observe 
 #'
 #' @export
 #' @importFrom dplyr %>%
@@ -10,10 +10,11 @@
 #' \dontrun{
 #' rw_assemble_plots("Tanzania", "~/Data/MER_Structured_Dataset_OU_IM_FY17-18_20180921_v2_2.rds") }
 
-rw_assemble_plots <- function(opunit, filepath_msd){
+rw_assemble_plots <- function(filepath_msd, opunit){
   
   #create a folder in the temp files to save all output viz
-    output_fldr <- fs::path(fs::path_temp(), opunit) #create file path for OU
+    tmp_fldr <- fs::path_temp()
+    output_fldr <- fs::path(tmp_fldr, opunit) #create file path for OU
     if(dir.exists(output_fldr)) fs::dir_delete(output_fldr) #if the folder exists, delete it
     fs::dir_create(output_fldr) #create folder
   
@@ -62,7 +63,7 @@ rw_assemble_plots <- function(opunit, filepath_msd){
    
   #plot USAID VMMC
     cat("\nplotting USAID VMMC by age ...")
-    rw_plot_achv_age(df_ou, "VMMC_CIRC",  "USAID") %>% 
+    rw_plot_achv_age(df_ou, "VMMC_CIRC",  agency = "USAID") %>% 
       rw_save(output_fldr, opunit, pd, "6_VMMCage")
     cat(" complete")
   

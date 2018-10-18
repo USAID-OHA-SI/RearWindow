@@ -4,12 +4,12 @@
 \alias{rw_assemble_plots}
 \title{Assemble various visuals for country MER performance review}
 \usage{
-rw_assemble_plots(opunit, filepath_msd)
+rw_assemble_plots(filepath_msd, opunit)
 }
 \arguments{
-\item{opunit}{operating unit to observe}
-
 \item{filepath_msd}{filepath to the OUxIM MSD (MSD must be saves as an rds)}
+
+\item{opunit}{operating unit to observe}
 }
 \description{
 Assemble various visuals for country MER performance review
