@@ -46,9 +46,9 @@ rw_plot_mech_table <- function(df){
     rw_plot_theme() +
     ggplot2::theme(
       axis.text.x = ggplot2::element_text(hjust = .9,
-                                          face = ifelse(df_mech$mechanismid %in% df_low_mech, "bold", "plain"),
+                                          face = ifelse(df_mech$mechanismid %in% lst_mech, "bold", "plain"),
                                           size = 16),
-      axis.text.y = ggplot2::element_text(face = ifelse(df_mech$indicator %in% df_low_ind, "bold", "plain"),
+      axis.text.y = ggplot2::element_text(face = ifelse(df_mech$indicator %in% lst_ind, "bold", "plain"),
                                           size = 14),
       axis.line.x = ggplot2::element_blank(),
       axis.line.y = ggplot2::element_line(color["lgray"]))
