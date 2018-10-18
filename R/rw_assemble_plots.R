@@ -65,6 +65,12 @@ rw_assemble_plots <- function(opunit, filepath_msd){
     rw_plot_achv_age(df_ou, "VMMC_CIRC",  "USAID") %>% 
       rw_save(output_fldr, opunit, pd, "6_VMMCage")
     cat(" complete")
+  
+  #mechanism table of indicator achievement
+    cat("\nplotting USAID mechanism achievement table ...")
+    rw_plot_mech_table(df_ou) %>% 
+      rw_save(output_fldr, opunit, pd, "7_MechTable")
+    cat(" complete")
     
   #identify mechanisms w/ indicators less than targeted achievement
     thres_med <- rw_addthresholds(df_ou)["med"] #identify threshold value
