@@ -4,7 +4,7 @@
 \alias{rw_prep_achv_age}
 \title{Setup table for age graphing}
 \usage{
-rw_prep_achv_age(df, ind, mechid = NULL)
+rw_prep_achv_age(df, ind, mechid = NULL, agency = NULL)
 }
 \arguments{
 \item{df}{dataframe to use}
@@ -12,6 +12,8 @@ rw_prep_achv_age(df, ind, mechid = NULL)
 \item{ind}{indicator whose age bands you want to graph}
 
 \item{mechid}{if you want to graph a particular mechanism, eg "82818", default = NULL}
+
+\item{agency}{can specify agency, eg "USAID" or "CDC", default = NULL}
 }
 \description{
 Setup table for age graphing

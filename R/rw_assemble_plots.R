@@ -47,8 +47,8 @@ rw_assemble_plots <- function(opunit, filepath_msd){
     cat(" complete")
     
   #plot USAID HTS & HTS_POS modalities
-    hts <- rw_plot_achv_hts(df_ou, "HTS_TST")
-    hts_pos <- rw_plot_achv_hts(df_ou, "HTS_TST_POS")
+    hts <- rw_plot_achv_hts(df_ou, "HTS_TST", "USAID")
+    hts_pos <- rw_plot_achv_hts(df_ou, "HTS_TST_POS", "USAID")
     
     cat("\nplotting USAID HTS_TST by modality ...")
     rw_save(hts, output_fldr, opunit, pd, "4_HTS")
@@ -62,7 +62,7 @@ rw_assemble_plots <- function(opunit, filepath_msd){
    
   #plot USAID VMMC
     cat("\nplotting USAID VMMC by age ...")
-    rw_plot_achv_age(df_ou, "VMMC_CIRC") %>% 
+    rw_plot_achv_age(df_ou, "VMMC_CIRC",  "USAID") %>% 
       rw_save(output_fldr, opunit, pd, "6_VMMCage")
     cat(" complete")
     

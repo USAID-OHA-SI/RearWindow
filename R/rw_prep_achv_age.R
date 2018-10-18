@@ -3,13 +3,14 @@
 #' @param df dataframe to use
 #' @param ind indicator whose age bands you want to graph
 #' @param mechid if you want to graph a particular mechanism, eg "82818", default = NULL
+#' @param agency can specify agency, eg "USAID" or "CDC", default = NULL
 #'
 #' @importFrom dplyr %>%
 #' @importFrom stats setNames
 #' @export
 
 
-rw_prep_achv_age <- function(df, ind, mechid = NULL) {
+rw_prep_achv_age <- function(df, ind, mechid = NULL, agency = NULL) {
   
   #identify current year cum and targets
     curr_fy <- ICPIutilities::identifypd(df, pd_type = "year")
@@ -21,6 +22,9 @@ rw_prep_achv_age <- function(df, ind, mechid = NULL) {
   
   #if using a mechanism, filter first for only that mechanism
     if(!is.null(mechid)) df <- dplyr::filter(df, mechanismid == mechid)
+    
+  #if agency is specified, filter first for only that agency
+    if(!is.null(agency)) df <- dplyr::filter(df, fundingagency == agency)
   
   #setup table to graph
     df %>% 

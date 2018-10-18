@@ -4,7 +4,7 @@
 \alias{rw_plot_achv_age}
 \title{Plot age achievement for a given indicator}
 \usage{
-rw_plot_achv_age(df, ind, mechid = NULL)
+rw_plot_achv_age(df, ind, mechid = NULL, agency = NULL)
 }
 \arguments{
 \item{df}{data frame to use}
@@ -12,6 +12,8 @@ rw_plot_achv_age(df, ind, mechid = NULL)
 \item{ind}{indicator to graph}
 
 \item{mechid}{if interested in a particular mechanism, eg "82182"; default = NULL}
+
+\item{agency}{can specify agency, eg "USAID" or "CDC", default = NULL}
 }
 \description{
 Plot age achievement for a given indicator

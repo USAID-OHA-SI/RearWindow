@@ -4,7 +4,7 @@
 \alias{rw_prep_achv}
 \title{Create a table for graphing achievement}
 \usage{
-rw_prep_achv(df, ..., ind = NULL)
+rw_prep_achv(df, ..., ind = NULL, agency = NULL)
 }
 \arguments{
 \item{df}{dataframe to}
@@ -12,6 +12,8 @@ rw_prep_achv(df, ..., ind = NULL)
 \item{...}{grouping variable, eg indicator}
 
 \item{ind}{can specify if you want to look at a disagg of one indicator, default = NULL}
+
+\item{agency}{can specify agency to filter to, eg "USAID" or "CDC", default = NULL}
 }
 \description{
 Create a table for graphing achievement

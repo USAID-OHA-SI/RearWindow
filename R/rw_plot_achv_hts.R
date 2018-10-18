@@ -16,7 +16,7 @@ rw_plot_achv_hts <- function(df, ind){
     threshold <- rw_addthresholds(df)
   
   #setup table to graph
-    ach <- rw_prep_achv(df, modality, ind = ind)
+    ach <- rw_prep_achv(df, modality, ind = ind, agency == "USAID")
   
   #graph achievement
     ach %>% 

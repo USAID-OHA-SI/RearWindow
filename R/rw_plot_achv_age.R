@@ -4,12 +4,13 @@
 #' @param df data frame to use
 #' @param ind indicator to graph
 #' @param mechid if interested in a particular mechanism, eg "82182"; default = NULL
+#' @param agency can specify agency, eg "USAID" or "CDC", default = NULL
 #'
 #' @importFrom dplyr %>% 
 #' @export
 
 
-rw_plot_achv_age <- function(df, ind, mechid = NULL){
+rw_plot_achv_age <- function(df, ind, mechid = NULL, agency = NULL){
   
   #add palette
     color <- rw_addpalette()
@@ -18,7 +19,7 @@ rw_plot_achv_age <- function(df, ind, mechid = NULL){
     threshold <- rw_addthresholds(df)
   
   #prep table
-    df_age <- rw_prep_achv_age(df, ind, mechid)
+    df_age <- rw_prep_achv_age(df, ind, mechid, agency)
   
   #graph  
     df_age %>% 

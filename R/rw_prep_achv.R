@@ -3,6 +3,7 @@
 #' @param df dataframe to 
 #' @param ... grouping variable, eg indicator
 #' @param ind can specify if you want to look at a disagg of one indicator, default = NULL
+#' @param agency can specify agency to filter to, eg "USAID" or "CDC", default = NULL 
 #'
 #' @importFrom dplyr %>% 
 #' @export
@@ -17,7 +18,7 @@
 #' } 
 
 
-rw_prep_achv <- function(df, ..., ind = NULL){
+rw_prep_achv <- function(df, ..., ind = NULL, agency = NULL){
   
   #capture grouping variables as a list of formulas
     group_vars <- dplyr::quos(...)
@@ -33,6 +34,8 @@ rw_prep_achv <- function(df, ..., ind = NULL){
     } else {
       df <- dplyr::filter(df, indicator == ind, standardizeddisaggregate != "Total Numerator")
     }
+  #Filter to one agency if agency != NULL
+    if(!is.null(agency)) df <- dplyr::filter(df, fundingagency == agency)
     
   #generate a table of cumulative results and targets for all indicators
     df %>% 
