@@ -17,14 +17,17 @@ rw_compile <- function(filepath, opunit){
   #clean with ICPI utilities - offical names
     df <- ICPIutilities::rename_official(df)
       
-      
-    #select key columns
+  #select key columns
     df <- df %>% 
       dplyr::select(operatingunit, fundingagency, mechanismid, implementingmechanismname, primepartner, indicator, 
                     standardizeddisaggregate, agesemifine, sex, otherdisaggregate, modality, 
                     dplyr::starts_with("fy"))
-  #add cumulative
-    df <- ICPIutilities::add_cumulative(df)
+    
+  #add aggregate & add cumulative
+    df <- df %>% 
+      rw_summarize(operatingunit, fundingagency, mechanismid, implementingmechanismname, primepartner, indicator, 
+                   standardizeddisaggregate, agesemifine, sex, otherdisaggregate, modality) %>% 
+      ICPIutilities::add_cumulative(df)
     
   #remove rows with no data to reduce row count
     df <- dplyr::filter_if(df, is.numeric, dplyr::any_vars(!is.na(.) & . != 0))
