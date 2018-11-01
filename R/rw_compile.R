@@ -24,10 +24,7 @@ rw_compile <- function(filepath, opunit){
                     dplyr::starts_with("fy"))
     
   #add aggregate & add cumulative
-    df <- df %>% 
-      rw_summarize(operatingunit, fundingagency, mechanismid, implementingmechanismname, primepartner, indicator, 
-                   standardizeddisaggregate, agesemifine, sex, otherdisaggregate, modality) %>% 
-      ICPIutilities::add_cumulative(df)
+    df <- ICPIutilities::add_cumulative(df)
     
   #remove rows with no data to reduce row count
     df <- dplyr::filter_if(df, is.numeric, dplyr::any_vars(!is.na(.) & . != 0))
