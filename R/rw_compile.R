@@ -23,6 +23,9 @@ rw_compile <- function(filepath, opunit){
                     standardizeddisaggregate, agesemifine, sex, otherdisaggregate, modality, 
                     dplyr::starts_with("fy"))
     
+  #add in net new target
+    df <- rw_gen_nn_target(df)
+    
   #add aggregate & add cumulative
     df <- ICPIutilities::add_cumulative(df)
     
