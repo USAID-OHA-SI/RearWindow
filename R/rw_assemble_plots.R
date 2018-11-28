@@ -8,7 +8,7 @@
 #'
 #' @examples
 #' \dontrun{
-#' rw_assemble_plots("Tanzania", "~/Data/MER_Structured_Dataset_OU_IM_FY17-18_20180921_v2_2.rds") }
+#' rw_assemble_plots("~/Data/MER_Structured_Dataset_OU_IM_FY17-18_20180921_v2_2.rds", "Tanzania") }
 
 rw_assemble_plots <- function(filepath_msd, opunit){
   
